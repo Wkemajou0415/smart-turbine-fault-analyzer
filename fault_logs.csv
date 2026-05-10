@@ -1,4 +1,7 @@
 Timestamp,Current,Temperature,Vibration,Status,Fault
-2026-05-09 20:07:11,95,45,2,Normal,None
-2026-05-09 20:07:12,130,70,6,Critical Fault,Overheat + Vibration
-2026-05-09 20:07:13,110,55,3,Normal,None
+2026-05-10 10:36:30,95,45,2,Normal,None
+2026-05-10 10:36:31,130,70,6,Critical Fault,Overheat + Vibration
+2026-05-10 10:36:32,110,55,3,Normal,None
+2026-05-10 10:36:33,120,75,4,Warning,Overheating
+2026-05-10 10:36:34,135,80,7,Critical Fault,Overheat + Vibration
+2026-05-10 10:36:35,100,74,8,Critical Fault,Overheat + Vibration

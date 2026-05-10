@@ -9,7 +9,10 @@ records = []
 turbine_data = [
     {"current": 95, "temperature": 45, "vibration": 2},
     {"current": 130, "temperature": 70, "vibration": 6},
-    {"current": 110, "temperature": 55, "vibration": 3}
+    {"current": 110, "temperature": 55, "vibration": 3},
+    {"current": 120, "temperature": 75, "vibration": 4},
+    {"current": 135, "temperature": 80, "vibration": 7},
+    {"current": 100, "temperature": 74, "vibration": 8}
 ]
 
 fault_counts = {

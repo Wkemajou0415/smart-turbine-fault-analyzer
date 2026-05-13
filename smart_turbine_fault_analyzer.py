@@ -7,7 +7,7 @@ import csv
 records = []
 
 turbine_data = [
-    {"current": 95, "temperature": 45, "vibration": 2},
+    {"current": -95, "temperature": 45, "vibration": 2},
     {"current": 130, "temperature": 70, "vibration": 6},
     {"current": 110, "temperature": 55, "vibration": 3},
     {"current": 120, "temperature": 75, "vibration": 4},
@@ -34,26 +34,36 @@ for record in turbine_data:
     status = "Normal"
     fault = "None"
 
-    if current > 120:
+    # Sensor Feasibility Check
+    if (
+    current is None or temp is None or vibration is None
+    or current < 0
+    or temp < -20 or temp > 120
+    or vibration < 0 or vibration > 20
+    ):
         status = "Warning"
-        fault = "Overcurrent"
-        fault_counts["Overcurrent"] += 1
+        fault = "Sensor Failure"
+        fault_counts["Sensor Failure"] += 1
+    else:
+        if current > 120:
+            status = "Warning"
+            fault = "Overcurrent"
+            fault_counts["Overcurrent"] += 1
 
-    if temp > 60:
-        status = "Warning"
-        fault = "Overheating"
-        fault_counts["Overheating"] += 1
+        if temp > 60:
+            status = "Warning"
+            fault = "Overheating"
+            fault_counts["Overheating"] += 1
 
-    if vibration > 5:
-        status = "Warning"
-        fault = "High Vibration"
-        fault_counts["High Vibration"] += 1
+        if vibration > 5:
+            status = "Warning"
+            fault = "High Vibration"
+            fault_counts["High Vibration"] += 1
 
-    if temp > 60 and vibration > 5:
-        status = "Critical Fault"
-        fault = "Overheat + Vibration"
-
-        critical_faults += 1
+        if temp > 60 and vibration > 5:
+            status = "Critical Fault"
+            fault = "Overheat + Vibration"
+            critical_faults += 1
 
     time.sleep(1)
     timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
